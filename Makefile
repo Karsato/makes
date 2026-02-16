@@ -1,4 +1,12 @@
-SHELL := /bin/zsh
+# Intentar encontrar zsh, si no, buscar bash
+SHELL_PATH := $(wildcard /bin/zsh /usr/bin/zsh /bin/bash /usr/bin/bash)
+
+# Seleccionar la primera coincidencia encontrada
+SHELL := $(firstword $(SHELL_PATH))
+
+# (Opcional) Si quieres ver qué shell se eligió
+$(info Utilizando shell: $(SHELL))
+
 .DEFAULT_GOAL := help
 
 # Variables globales
